@@ -1,14 +1,18 @@
 import os
 from selenium import webdriver
 from PIL import Image
+import random
+import uuid
 from wand.image import Image
 from selenium.webdriver.common.keys import Keys
 import time 
 
 os.environ['PATH'] = r"C:/Devlopment/SeleniumDrivers/chromedriver.exe"
+imagePath = '../testScreenshot/'
 basePricingPage = '../testScreenshot/PricingRef.png'
 baseAboutPage = '../testScreenshot/AboutRef.png'
 baseHomePage = '../testScreenshot/HomeRef.png'
+pathDiffImage = '../testScreenshot/diff.jpg'
 #compPricingPage = '../testScreenshot/testimage1.png'
 driver = webdriver.Chrome()
 url = "http://localhost:3000"
@@ -24,10 +28,9 @@ def screenshotPricing():
     pricing.click()
     driver.save_screenshot('../testScreenshot/PricingComp.png')
     compImage = '../testScreenshot/PricingComp.png' #muss bei erfolg zu neuem global ref image werden
-    #global compPricingPage 
-    #compPricingPage = '../testScreenshot/testimage1.png'
-    test1 = compareScreenshot(compImage, refImage)
-    print(test1)
+    id = 'Pricing'
+    test1 = compareScreenshot(compImage, refImage, id)
+    #print(test1)
     if test1 == True: 
         return True
     else:
@@ -39,10 +42,9 @@ def screenshotHome():
     time.sleep(0.5)
     driver.save_screenshot('../testScreenshot/HomeComp.png')
     compImage = '../testScreenshot/HomeComp.png' #muss bei erfolg zu neuem global ref image werden
-    #global compPricingPage 
-    #compPricingPage = '../testScreenshot/testimage1.png'
-    test1 = compareScreenshot(compImage, refImage)
-    print(test1)
+    id = 'Home'
+    test1 = compareScreenshot(compImage, refImage, id)
+    #print(test1)
     if test1 == True: 
         return True
     else:
@@ -56,16 +58,15 @@ def screenshotAbout():
     about.click()
     driver.save_screenshot('../testScreenshot/AboutComp.png')
     compImage = '../testScreenshot/AboutComp.png' #muss bei erfolg zu neuem global ref image werden
-    #global compPricingPage 
-    #compPricingPage = '../testScreenshot/testimage1.png'
-    test1 = compareScreenshot(compImage, refImage)
-    print(test1)
+    id = 'About'
+    test1 = compareScreenshot(compImage, refImage, id)
+    #print(test1)
     if test1 == True: 
         return True
     else:
         return False
 
-def compareScreenshot(compImage, refImage):
+def compareScreenshot(compImage, refImage, id):
     with Image(filename=refImage) as base:
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 20%
@@ -76,7 +77,7 @@ def compareScreenshot(compImage, refImage):
     if result_metric == 0.75:
         return True
     else:
-        result_image.save(filename='../testScreenshot/diff.jpg')
+        result_image.save(filename=(f'{imagePath}diffImage{id}.png'))
         return False
 
 
@@ -90,6 +91,7 @@ def main():
             #maybe trivial, da die ja alle gleich sind.
         #stattdessen Gedanken druber machen, wie neue Testfaelle eingefuegt werden koennen
             #wohl moeglich eigene python datei welche das uebernimmt?
+        print(True)
         return True
     else:
         print(False)
