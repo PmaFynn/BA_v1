@@ -8,10 +8,10 @@ from selenium.webdriver.common.keys import Keys
 import time 
 
 os.environ['PATH'] = r"C:/Devlopment/SeleniumDrivers/chromedriver.exe"
-imagePath = '../testScreenshot/'
-basePricingPage = '../testScreenshot/PricingRef.png'
-baseAboutPage = '../testScreenshot/AboutRef.png'
-baseHomePage = '../testScreenshot/HomeRef.png'
+imagePath = './compImages/'
+basePricingPage = './compImages/PricingRef.png'
+baseAboutPage = './compImages/AboutRef.png'
+baseHomePage = './compImages/HomeRef.png'
 driver = webdriver.Chrome()
 url = "http://localhost:3000"
 driver.get(url) #local als auch 'on your network' funktioniert beides
@@ -24,8 +24,8 @@ def screenshotPricing():
     time.sleep(0.5)
     pricing = driver.find_element("id" , "1234")
     pricing.click()
-    driver.save_screenshot('../testScreenshot/PricingComp.png')
-    compImage = '../testScreenshot/PricingComp.png' #muss bei erfolg zu neuem global ref image werden
+    driver.save_screenshot('./compImages/PricingComp.png')
+    compImage = './compImages/PricingComp.png' #muss bei erfolg zu neuem global ref image werden
     id = 'Pricing'
     test1 = compareScreenshot(compImage, refImage, id)
     #print(test1)
@@ -38,8 +38,8 @@ def screenshotHome():
     refImage = baseHomePage
     driver.implicitly_wait(3)
     time.sleep(0.5)
-    driver.save_screenshot('../testScreenshot/HomeComp.png')
-    compImage = '../testScreenshot/HomeComp.png' #muss bei erfolg zu neuem global ref image werden
+    driver.save_screenshot('./compImages/HomeComp.png')
+    compImage = './compImages/HomeComp.png' #muss bei erfolg zu neuem global ref image werden
     id = 'Home'
     test1 = compareScreenshot(compImage, refImage, id)
     #print(test1)
@@ -54,8 +54,8 @@ def screenshotAbout():
     time.sleep(0.5)
     about = driver.find_element("id" , "12345")
     about.click()
-    driver.save_screenshot('../testScreenshot/AboutComp.png')
-    compImage = '../testScreenshot/AboutComp.png' #muss bei erfolg zu neuem global ref image werden
+    driver.save_screenshot('./compImages/AboutComp.png')
+    compImage = './compImages/AboutComp.png' #muss bei erfolg zu neuem global ref image werden
     id = 'About'
     test1 = compareScreenshot(compImage, refImage, id)
     #print(test1)
@@ -71,7 +71,7 @@ def compareScreenshot(compImage, refImage, id):
             result_image, result_metric = base.compare(img)
             print(result_metric)
             #with result_image:
-                #result_image.save(filename='../testScreenshot/diff.jpg')
+                #result_image.save(filename='./compImages/diff.jpg')
     if result_metric == 0.75:
         return True
     else:
@@ -92,6 +92,12 @@ def main():
         return False
 
 main()
+
+#eine Funktion fuer Aenderungen der reference Variabeln waere vllt:
+    #eine andere python selenium datei welche ein neues Bild macht und das als ref speichert, da immer ueberschrieben wird -> easy
+
+#main()
+#changeRefImages()
 
 
 #alle neuen images als neue ref images setzen
