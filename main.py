@@ -1,5 +1,7 @@
 import os
 from selenium import webdriver
+from PIL import Image
+from wand.image import Image
 from selenium.webdriver.common.keys import Keys
 import time 
 
@@ -8,11 +10,25 @@ os.environ['PATH'] = r"C:/Devlopment/SeleniumDrivers/chromedriver.exe"
 #es gibt mehrere driver, also cross browser testing maybe moeglich
 def test():
     driver = webdriver.Chrome()
-    driver.get("http://localhost:3000") #local als auch 'on your network' funktioniert beides
+    #orginal_size = driver.get_window_size()
+    url = "http://localhost:3000"
+    driver.get(url) #local als auch 'on your network' funktioniert beides
     driver.implicitly_wait(3)
     time.sleep(0.5)
     pricing = driver.find_element("id" , "1234")
     pricing.click()
+    driver.save_screenshot('../testScreenshot/testScreenshot1.png')
+    #screenshot = Image.open('../testScreenshot/testScreenshot1.png')
+    #screenshot.show()
+    with Image(filename='../testScreenshot/testScreenshot1.png') as base:
+        with Image(filename='../testScreenshot/testScreenshot1.png') as img:
+            base.fuzz = base.quantum_range * 0.20  # Threshold of 20%
+            result_image, result_metric = base.compare(img)
+            print(result_metric)
+            with result_image:
+                result_image.save(filename='../testScreenshot/diff.jpg')
     while(True):
        pass
 test()
+
+
