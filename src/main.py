@@ -102,7 +102,7 @@ def main():
 
 #takeNewRefImages()
 
-main()
+#main()
 
 #eine Funktion fuer Aenderungen der reference Variabeln waere vllt:
     #eine andere python selenium datei welche ein neues Bild macht und das als ref speichert, da immer ueberschrieben wird -> easy
