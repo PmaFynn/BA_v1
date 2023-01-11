@@ -12,8 +12,6 @@ imagePath = '../testScreenshot/'
 basePricingPage = '../testScreenshot/PricingRef.png'
 baseAboutPage = '../testScreenshot/AboutRef.png'
 baseHomePage = '../testScreenshot/HomeRef.png'
-pathDiffImage = '../testScreenshot/diff.jpg'
-#compPricingPage = '../testScreenshot/testimage1.png'
 driver = webdriver.Chrome()
 url = "http://localhost:3000"
 driver.get(url) #local als auch 'on your network' funktioniert beides
