@@ -8,7 +8,7 @@ import time
 os.environ['PATH'] = r"C:/Devlopment/SeleniumDrivers/chromedriver.exe"
 #PATH = "C:\Devlopment\SeleniumDrivers\chromedriver.exe"
 #es gibt mehrere driver, also cross browser testing maybe moeglich
-def test():
+def main():
     driver = webdriver.Chrome()
     #orginal_size = driver.get_window_size()
     url = "http://localhost:3000"
@@ -17,18 +17,20 @@ def test():
     time.sleep(0.5)
     pricing = driver.find_element("id" , "1234")
     pricing.click()
-    driver.save_screenshot('../testScreenshot/testScreenshot1.png')
+    driver.save_screenshot('../testScreenshot/testimage1.png')
+    compareScreenshot()
     #screenshot = Image.open('../testScreenshot/testScreenshot1.png')
     #screenshot.show()
+
+def compareScreenshot():
     with Image(filename='../testScreenshot/testScreenshot1.png') as base:
-        with Image(filename='../testScreenshot/testScreenshot1.png') as img:
-            base.fuzz = base.quantum_range * 0.20  # Threshold of 20%
+        with Image(filename='../testScreenshot/testimage1.png') as img:
+            base.fuzz = base.quantum_range * 0  # Threshold of 20%
             result_image, result_metric = base.compare(img)
             print(result_metric)
             with result_image:
                 result_image.save(filename='../testScreenshot/diff.jpg')
-    while(True):
-       pass
-test()
+
+main()
 
 
