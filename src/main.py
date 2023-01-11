@@ -1,8 +1,8 @@
 import os
 from selenium import webdriver
 from PIL import Image
-import random
-import uuid
+#import random
+#import uuid
 from wand.image import Image
 from selenium.webdriver.common.keys import Keys
 import time 
