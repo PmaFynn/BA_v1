@@ -87,18 +87,16 @@ def main():
     sP = screenshotPricing()
     sA = screenshotAbout()
     if sA and sP and sH == True:
-        #alle neuen images als neue ref images setzen
-            #maybe trivial, da die ja alle gleich sind.
-        #stattdessen Gedanken druber machen, wie neue Testfaelle eingefuegt werden koennen
-            #wohl moeglich eigene python datei welche das uebernimmt?
         print(True)
         return True
     else:
         print(False)
         return False
-    #ap etc
-    #if alle true dann also base images anedern
 
 main()
 
-#taking images for every page, die dann uebergeben an compare screenshot function fuer jede page <- alles in main
+
+#alle neuen images als neue ref images setzen
+            #maybe trivial, da die ja alle gleich sind.
+        #stattdessen Gedanken druber machen, wie neue Testfaelle eingefuegt werden koennen
+            #wohl moeglich eigene python datei welche das uebernimmt?
