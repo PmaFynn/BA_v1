@@ -7,7 +7,7 @@ export default function Navbar() {
         <Link to='/' className='site-title'> Site Name </Link>
         <ul>
           <CustomLink to='/pricing' id='1234'>Pricing</CustomLink>
-          <CustomLink to='/about'>About</CustomLink>
+          <CustomLink to='/about' id='12345'>About</CustomLink>
         </ul>
     </nav>
   )
