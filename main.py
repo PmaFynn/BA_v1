@@ -13,6 +13,7 @@ basePricingPage = './compImages/PricingRef.png'
 baseAboutPage = './compImages/AboutRef.png'
 baseHomePage = './compImages/HomeRef.png'
 driver = webdriver.Chrome()
+driver.set_window_size(1400, 1050)
 url = "http://localhost:3000"
 driver.get(url) #local als auch 'on your network' funktioniert beides
 
@@ -72,13 +73,21 @@ def compareScreenshot(compImage, refImage, id):
             print(result_metric)
             #with result_image:
                 #result_image.save(filename='./compImages/diff.jpg')
-    if result_metric == 0.75:
+    if result_metric == 1.0:
         return True
     else:
         result_image.save(filename=(f'{imagePath}diffImage{id}.png'))
         return False
-
-
+ 
+def takeNewRefImages():
+    driver.implicitly_wait(3)
+    driver.save_screenshot('./compImages/HomeRef.png')
+    about = driver.find_element("id" , "12345")
+    about.click()
+    driver.save_screenshot('./compImages/AboutRef.png')
+    pricing = driver.find_element("id" , "1234")
+    pricing.click()
+    driver.save_screenshot('./compImages/PricingRef.png')
 
 def main():
     sH =screenshotHome()
@@ -90,6 +99,8 @@ def main():
     else:
         print(False)
         return False
+
+#takeNewRefImages()
 
 main()
 
