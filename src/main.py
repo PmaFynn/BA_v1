@@ -70,7 +70,7 @@ def compareScreenshot(compImage, refImage, id):
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 20%
             result_image, result_metric = base.compare(img)
-            print(result_metric)
+            print(result_metric, ' -- 1.0 if reference image and comparision image match' )
             #with result_image:
                 #result_image.save(filename='./compImages/diff.jpg')
     if result_metric == 1.0:
@@ -90,15 +90,17 @@ def takeNewRefImages():
     driver.save_screenshot('./compImages/PricingRef.png')
 
 def main():
-    sH =screenshotHome()
+    sH = screenshotHome()
     sP = screenshotPricing()
     sA = screenshotAbout()
     if sA and sP and sH == True:
-        print(True)
+        #print(True)
         return True
     else:
-        print(False)
+        #print(False)
         return False
+
+
 
 #takeNewRefImages()
 
