@@ -26,6 +26,7 @@ jobs:
       - run: sudo apt purge google-chrome-stable
       - run: sudo apt purge chromium-browser
       - run: sudo apt install -y chromium-browser
+      - run: chromeDriver -v      
       - run: npm ci
       - run: npm run build --if-present
       - run: pytest
