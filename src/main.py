@@ -37,7 +37,7 @@ baseHomePage = './compImages/HomeRef.png'
 #driver = webdriver.Chrome()
 #driver.set_window_size(1400, 1050)
 #url = "http://localhost:3000"
-url = "google.com"
+url = "https://www.google.com/"
 driver.get(url) #local als auch 'on your network' funktioniert beides
 
 #PATH = "C:\Devlopment\SeleniumDrivers\chromedriver.exe"
