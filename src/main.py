@@ -1,5 +1,9 @@
 import os
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.core.utils import ChromeType
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from PIL import Image
 #import random
 #import uuid
@@ -7,13 +11,30 @@ from wand.image import Image
 from selenium.webdriver.common.keys import Keys
 import time 
 
+
+chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+
+chrome_options = Options()
+options = [
+    "--headless",
+    "--disable-gpu",
+    "--window-size=1400,1050",
+    "--ignore-certificate-errors",
+    "--disable-extensions",
+    "--no-sandbox",
+    "--disable-dev-shm-usage"
+]
+for option in options:
+    chrome_options.add_argument(option)
+
+driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 os.environ['PATH'] = r"C:/Devlopment/SeleniumDrivers/chromedriver.exe"
 imagePath = './compImages/'
 basePricingPage = './compImages/PricingRef.png'
 baseAboutPage = './compImages/AboutRef.png'
 baseHomePage = './compImages/HomeRef.png'
-driver = webdriver.Chrome()
-driver.set_window_size(1400, 1050)
+#driver = webdriver.Chrome()
+#driver.set_window_size(1400, 1050)
 url = "http://localhost:3000"
 driver.get(url) #local als auch 'on your network' funktioniert beides
 
