@@ -23,9 +23,11 @@ jobs:
           pip install --upgrade Pillow
           pip install Wand
           pip install webdriver-manager
+          npm install -g serve
       - run: sudo apt purge google-chrome-stable
       #- run: sudo apt purge chromium-browser
       #- run: sudo apt install -y chromium-browser    
       - run: npm ci
       - run: npm run build --if-present
+      - run: serve -s build
       - run: pytest
