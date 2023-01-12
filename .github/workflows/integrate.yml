@@ -16,5 +16,5 @@ jobs:
         with:
           python-version: '3.10'
       - run: npm ci
-      - run: npm start
+      - run: npm run build
       - run: pytest
