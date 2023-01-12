@@ -12,7 +12,7 @@ from selenium.webdriver.common.keys import Keys
 import time 
 
 
-chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
+#chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
 chrome_options = Options()
 options = [
@@ -27,7 +27,8 @@ options = [
 for option in options:
     chrome_options.add_argument(option)
 
-driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+#fill in  the brackets below: service=chrome_service
+driver = webdriver.Chrome(options=chrome_options)
 os.environ['PATH'] = r"C:/Devlopment/SeleniumDrivers/chromedriver.exe"
 imagePath = './compImages/'
 basePricingPage = './compImages/PricingRef.png'
@@ -35,8 +36,8 @@ baseAboutPage = './compImages/AboutRef.png'
 baseHomePage = './compImages/HomeRef.png'
 #driver = webdriver.Chrome()
 #driver.set_window_size(1400, 1050)
-#url = "http://localhost:3000"
-url = "google.com"
+url = "http://localhost:3000"
+#url = "google.com"
 driver.get(url) #local als auch 'on your network' funktioniert beides
 
 #PATH = "C:\Devlopment\SeleniumDrivers\chromedriver.exe"
