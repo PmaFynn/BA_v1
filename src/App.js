@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React from 'react';
 import Navbar from './Navbar';
 import Pricing from './pages/Pricing';
 import About from './pages/About';
