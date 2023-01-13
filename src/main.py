@@ -36,8 +36,8 @@ baseAboutPage = './compImages/AboutRef.png'
 baseHomePage = './compImages/HomeRef.png'
 #driver = webdriver.Chrome()
 #driver.set_window_size(1400, 1050)
-url = "http://localhost:3000"
-#url = "https://www.google.com/"
+#url = "http://localhost:3000" local
+url = "https://pmafynn.github.io/BA_v1/"
 driver.get(url) #local als auch 'on your network' funktioniert beides
 
 #PATH = "C:\Devlopment\SeleniumDrivers\chromedriver.exe"
