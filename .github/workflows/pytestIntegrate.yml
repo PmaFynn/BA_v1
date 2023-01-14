@@ -23,4 +23,4 @@ jobs:
           pip install webdriver-manager
       - name: execute pytest
         run: pytest
-        run: git status
+      - run: git status
