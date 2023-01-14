@@ -6,7 +6,7 @@ on:
 
 jobs:
   test_push:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -41,4 +41,4 @@ jobs:
           github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
           repository: ${{ github.repository }}
       #- run: serve -s build
-      #- run: pytest
+      - run: pytest
