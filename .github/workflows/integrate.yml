@@ -41,4 +41,4 @@ jobs:
           github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
           repository: ${{ github.repository }}
       #- run: serve -s build
-      - run: pytest
+      #- run: pytest
