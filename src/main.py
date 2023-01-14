@@ -27,7 +27,7 @@ options = [
 for option in options:
     chrome_options.add_argument(option)
 
-#
+
 #fill in  the brackets below: service=chrome_service
 driver = webdriver.Chrome(options=chrome_options)
 os.environ['PATH'] = r"C:/Devlopment/SeleniumDrivers/chromedriver.exe"
