@@ -1,11 +1,11 @@
 name: Pytest after deployment
 
 on: 
-  deployment
+  deployment_status
 
 jobs:
   publish:
-    #if: github.event.deployment_status.state == 'success'
+    if: github.event.deployment_status.state == 'active'
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
