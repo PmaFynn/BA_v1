@@ -9,6 +9,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: CiServerImages
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -22,5 +24,10 @@ jobs:
           pip install webdriver-manager
       - name: execute pytest
         run: pytest
-      - run: git status
+      - name: Commit report
+        run: |
+          git config --global user.name 'Your Name'
+          git config --global user.email 'your-username@users.noreply.github.com'
+          git commit -a -m "Automated report"
+          git push
       #hier dann noch pushen
