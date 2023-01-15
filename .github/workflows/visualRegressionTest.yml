@@ -1,6 +1,6 @@
 name: Pytest after deployment
 
-on: deployment_status
+on: [deployment_status]
 
 jobs:
   publish:
