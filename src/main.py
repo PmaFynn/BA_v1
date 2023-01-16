@@ -36,59 +36,57 @@ basePricingPage = './compImages/PricingRef.png'
 baseAboutPage = './compImages/AboutRef.png'
 baseHomePage = './compImages/HomeRef.png'
 #driver = webdriver.Chrome()
-driver.set_window_size(1400, 1050)
+#driver.set_window_size(1400, 1050)
 #url = "http://localhost:3000" #local
 url = "https://pmafynn.github.io/BA_v1/"
 driver.get(url) #local als auch 'on your network' funktioniert beides
 #PATH = "C:\Devlopment\SeleniumDrivers\chromedriver.exe"
 #es gibt mehrere driver, also cross browser testing maybe moeglich
-def screenshotPricing():
-    refImage = basePricingPage
+
+def screenshotPricing(width, height):
+    refImage = f'{imagePath}PricingRef.png'
     driver.implicitly_wait(3)
-    time.sleep(0.5)
     pricing = driver.find_element("id" , "1234")
     pricing.click()
-    driver.save_screenshot('./compImages/PricingComp.png')
-    compImage = './compImages/PricingComp.png' #muss bei erfolg zu neuem global ref image werden
+    driver.save_screenshot(f'{imagePath}PricingComp{width}{height}.png')
+    compImage = f'{imagePath}PricingComp{width}{height}.png' #muss bei erfolg zu neuem global ref image werden
     id = 'Pricing'
-    test1 = compareScreenshot(compImage, refImage, id)
+    test1 = compareScreenshot(compImage, refImage, id, width, height)
     #print(test1)
     if test1 == True: 
         return True
     else:
         return False
 
-def screenshotHome():
-    refImage = baseHomePage
+def screenshotHome(width, height):
+    refImage = f'{imagePath}HomeRef.png'
     driver.implicitly_wait(3)
-    time.sleep(0.5)
-    driver.save_screenshot('./compImages/HomeComp.png')
-    compImage = './compImages/HomeComp.png' #muss bei erfolg zu neuem global ref image werden
+    driver.save_screenshot(f'{imagePath}HomeComp{width}{height}.png')
+    compImage = f'{imagePath}HomeComp{width}{height}.png' #muss bei erfolg zu neuem global ref image werden
     id = 'Home'
-    test1 = compareScreenshot(compImage, refImage, id)
+    test1 = compareScreenshot(compImage, refImage, id, width, height)
     #print(test1)
     if test1 == True: 
         return True
     else:
         return False
 
-def screenshotAbout():
-    refImage = baseAboutPage
+def screenshotAbout(width, height):
+    refImage = f'{imagePath}AboutRef.png'
     driver.implicitly_wait(3)
-    time.sleep(0.5)
     about = driver.find_element("id" , "12345")
     about.click()
-    driver.save_screenshot('./compImages/AboutComp.png')
-    compImage = './compImages/AboutComp.png' #muss bei erfolg zu neuem global ref image werden
+    driver.save_screenshot(f'{imagePath}AboutComp{width}{height}.png')
+    compImage = f'{imagePath}AboutComp{width}{height}.png' #muss bei erfolg zu neuem global ref image werden
     id = 'About'
-    test1 = compareScreenshot(compImage, refImage, id)
+    test1 = compareScreenshot(compImage, refImage, id, width, height)
     #print(test1)
     if test1 == True: 
         return True
     else:
         return False
 
-def compareScreenshot(compImage, refImage, id):
+def compareScreenshot(compImage, refImage, id, width, height):
     with Image(filename=refImage) as base:
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 20%
@@ -100,7 +98,7 @@ def compareScreenshot(compImage, refImage, id):
     if result_metric == 1.0:
         return True
     else:
-        result_image.save(filename=(f'{imagePath}diffImage{id}.png'))
+        result_image.save(filename=(f'{imagePath}diffImage{id}{width}{height}.png'))
         return False
  
 def takeNewRefImages():
@@ -113,15 +111,16 @@ def takeNewRefImages():
     pricing.click()
     driver.save_screenshot('./compImages/PricingRef.png')
 
-def main():
-    sH = screenshotHome()
-    sP = screenshotPricing()
-    sA = screenshotAbout()
+def main(width, height):
+    driver.set_window_size(width, height)
+    sH = screenshotHome(width, height)
+    sP = screenshotPricing(width, height)
+    sA = screenshotAbout(width, height)
     if sA and sP and sH == True:
         #print(True)
         return True
     else:
-        print("Visual Regression Test failed. Reverting to last commit suggested to fix it")
+        print("Visual Regression Test for", width, height, "failed. Reverting to last commit suggested to fix it")
         return False
 
 
