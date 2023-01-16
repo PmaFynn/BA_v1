@@ -5,6 +5,7 @@ on:
     types: [my-event]
 
 permissions: write-all
+
 jobs:
   execute_pytest:
     runs-on: windows-latest
