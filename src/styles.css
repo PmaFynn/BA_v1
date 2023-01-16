@@ -18,7 +18,7 @@ body {
 }
 
 .site-title{
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 .nav ul{
@@ -39,9 +39,9 @@ body {
 }
 
 .nav li.active{
-    background-color: #535;
+    background-color: #555;
 }
 
 .nav li:hover{
-    background-color: #777;
+    background-color: #797;
 }
