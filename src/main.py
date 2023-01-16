@@ -93,7 +93,7 @@ def compareScreenshot(compImage, refImage, id):
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 20%
             result_image, result_metric = base.compare(img)
-            print(result_metric, ' -- 1.0 if reference image and comparison image match. If the images do not match see https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/ for the resulting difference image! ' )
+            print(result_metric, ' -- 1.0 if', id, '-reference image and comparison image match.' )
             #https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/diffImageAbout.png
             #with result_image:
                 #result_image.save(filename='./compImages/diff.jpg')
@@ -121,7 +121,7 @@ def main():
         #print(True)
         return True
     else:
-        #print(False)
+        print("Visual Regression Test failed. Revert to last commit suggested to fix it")
         return False
 
 
