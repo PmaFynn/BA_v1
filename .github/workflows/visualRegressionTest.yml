@@ -30,11 +30,11 @@ jobs:
           git pull origin master --allow-unrelated-histories
       - name: saves the screenshots
         run: .\src\main.py
-      - name: execute pytest
-        run: pytest
       - name: Commit report
         run: |
           git config --global user.name "PmaFynn"
           git config --global user.email "fynn120801@gmail.com"
           git commit -a -m "Automated report"
           git push
+      - name: execute pytest
+        run: pytest
