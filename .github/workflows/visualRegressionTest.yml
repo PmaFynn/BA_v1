@@ -24,7 +24,7 @@ jobs:
           pip install Wand
           pip install webdriver-manager
       - name: pulls updates from origin master
-        run: git pull origin master
+        run: git pull origin master --allow-unrelated-histories
       - name: saves the screenshots
         run: .\src\main.py
       - name: execute pytest
