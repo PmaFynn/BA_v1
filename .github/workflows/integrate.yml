@@ -1,11 +1,11 @@
-name: Node Continuous Integration
+name: CI/CD
 
 on:
   push:
     branches: [ master ]
 
 jobs:
-  test_push:
+  CICD_on_push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -13,7 +13,6 @@ jobs:
         with: 
           node-version: 18
       - run: npm ci
-      #- run: npm run build --if-present
       - name: Deploy
         run: |
           git config --global user.name "Fynn_Friedrichs"

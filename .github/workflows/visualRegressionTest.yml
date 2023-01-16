@@ -31,4 +31,3 @@ jobs:
           git config --global user.email "fynn120801@gmail.com"
           git commit -a -m "Automated report"
           git push
-      #hier dann noch pushen

@@ -45,14 +45,12 @@ driver.get(url) #local als auch 'on your network' funktioniert beides
 def screenshotPricing():
     refImage = basePricingPage
     driver.implicitly_wait(3)
-    time.sleep(0.5)
     pricing = driver.find_element("id" , "1234")
     pricing.click()
     driver.save_screenshot('./compImages/PricingComp.png')
     compImage = './compImages/PricingComp.png' #muss bei erfolg zu neuem global ref image werden
     id = 'Pricing'
     test1 = compareScreenshot(compImage, refImage, id)
-    #print(test1)
     if test1 == True: 
         return True
     else:
@@ -61,12 +59,10 @@ def screenshotPricing():
 def screenshotHome():
     refImage = baseHomePage
     driver.implicitly_wait(3)
-    time.sleep(0.5)
     driver.save_screenshot('./compImages/HomeComp.png')
     compImage = './compImages/HomeComp.png' #muss bei erfolg zu neuem global ref image werden
     id = 'Home'
     test1 = compareScreenshot(compImage, refImage, id)
-    #print(test1)
     if test1 == True: 
         return True
     else:
@@ -75,14 +71,12 @@ def screenshotHome():
 def screenshotAbout():
     refImage = baseAboutPage
     driver.implicitly_wait(3)
-    time.sleep(0.5)
     about = driver.find_element("id" , "12345")
     about.click()
     driver.save_screenshot('./compImages/AboutComp.png')
-    compImage = './compImages/AboutComp.png' #muss bei erfolg zu neuem global ref image werden
+    compImage = './compImages/AboutComp.png' 
     id = 'About'
     test1 = compareScreenshot(compImage, refImage, id)
-    #print(test1)
     if test1 == True: 
         return True
     else:
@@ -112,6 +106,11 @@ def takeNewRefImages():
     pricing = driver.find_element("id" , "1234")
     pricing.click()
     driver.save_screenshot('./compImages/PricingRef.png')
+
+def takeCompAndDiffImages():
+    screenshotAbout()
+    screenshotHome()
+    screenshotPricing()   
 
 def main():
     sH = screenshotHome()
