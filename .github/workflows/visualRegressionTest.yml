@@ -10,8 +10,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: images
+        #with:
+          #ref: images
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
