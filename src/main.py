@@ -121,7 +121,7 @@ def main():
         #print(True)
         return True
     else:
-        print("Visual Regression Test failed. Revert to last commit suggested to fix it")
+        print("Visual Regression Test failed. Reverting to last commit suggested to fix it")
         return False
 
 
