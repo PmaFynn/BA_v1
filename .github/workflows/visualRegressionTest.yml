@@ -24,7 +24,10 @@ jobs:
           pip install Wand
           pip install webdriver-manager
       - name: pulls updates from origin master
-        run: git pull origin master --allow-unrelated-histories
+        run: |
+          git config --global user.name "PmaFynn"
+          git config --global user.email "fynn120801@gmail.com"
+          git pull origin master --allow-unrelated-histories
       - name: saves the screenshots
         run: .\src\main.py
       - name: execute pytest
