@@ -23,6 +23,10 @@ jobs:
           pip install --upgrade Pillow
           pip install Wand
           pip install webdriver-manager
+      - name: pulls updates from origin master
+        run: git pull origin master
+      - name: saves the screenshots
+        run: .\src\main.py
       - name: execute pytest
         run: pytest
       - name: Commit report

@@ -126,7 +126,7 @@ def main():
 
 
 #takeNewRefImages()
-
+takeCompAndDiffImages()
 #main()
 
 #eine Funktion fuer Aenderungen der reference Variabeln waere vllt:
