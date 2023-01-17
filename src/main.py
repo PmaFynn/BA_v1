@@ -107,6 +107,8 @@ def compareScreenshot(compImage, refImage, id, width, height):
         quantumRange = 0.75
     elif width == 828 and height == 1792:
         quantumRange = 0.75
+    elif width == 1280 and height == 800:
+        quantumRange = 0.75
     else:
         print('Resolution does not exist')
         return False
@@ -141,6 +143,7 @@ def RefForAllSizes():
     takeNewRefImages(1400, 1050)
     takeNewRefImages(1920, 1080)
     takeNewRefImages(828, 1792)
+    takeNewRefImages(1280, 800)
 
 def main(width, height):
     driver.set_window_size(width, height)

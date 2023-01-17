@@ -10,3 +10,6 @@ def test_1920x1080():
 def test_828x1792():
         assert main(828, 1792) == True
 
+def test_1280x800():
+        assert main(1280, 800) == True
+
