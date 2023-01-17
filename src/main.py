@@ -29,12 +29,13 @@ for option in options:
 
 
 #fill in  the brackets below: service=chrome_service
-driver = webdriver.Chrome(options=chrome_options)
+#driver = webdriver.Chrome() #So sehe ich den driver
+driver = webdriver.Chrome(options=chrome_options) #so nicht
 os.environ['PATH'] = r"C:/Devlopment/SeleniumDrivers/chromedriver.exe"
 imagePath = './compImages/'
-basePricingPage = './compImages/PricingRef.png'
-baseAboutPage = './compImages/AboutRef.png'
-baseHomePage = './compImages/HomeRef.png'
+#basePricingPage = './compImages/PricingRef.png'
+#baseAboutPage = './compImages/AboutRef.png'
+#baseHomePage = './compImages/HomeRef.png'
 #driver = webdriver.Chrome()
 #driver.set_window_size(1400, 1050)
 #url = "http://localhost:3000" #local
@@ -42,6 +43,20 @@ url = "https://pmafynn.github.io/BA_v1/"
 driver.get(url) #local als auch 'on your network' funktioniert beides
 #PATH = "C:\Devlopment\SeleniumDrivers\chromedriver.exe"
 #es gibt mehrere driver, also cross browser testing maybe moeglich
+
+def screenshot(width, height, id, webID):
+    refImage = f'{imagePath}{id}/{id}Ref{width}x{height}.png'
+    driver.implicitly_wait(3)
+    button = driver.find_element("id" , webID)
+    button.click()
+    driver.save_screenshot(f'{imagePath}{id}/{id}Comp{width}x{height}.png')
+    compImage = f'{imagePath}{id}/{id}Comp{width}x{height}.png' 
+    id = id #maybe ohne
+    imageMatch = compareScreenshot(compImage, refImage, id, width, height)
+    if imageMatch == True: 
+        return True
+    else:
+        return False
 
 def screenshotPricing(width, height):
     refImage = f'{imagePath}PricingRef.png'
@@ -52,7 +67,6 @@ def screenshotPricing(width, height):
     compImage = f'{imagePath}PricingComp{width}{height}.png' #muss bei erfolg zu neuem global ref image werden
     id = 'Pricing'
     test1 = compareScreenshot(compImage, refImage, id, width, height)
-    #print(test1)
     if test1 == True: 
         return True
     else:
@@ -65,7 +79,6 @@ def screenshotHome(width, height):
     compImage = f'{imagePath}HomeComp{width}{height}.png' #muss bei erfolg zu neuem global ref image werden
     id = 'Home'
     test1 = compareScreenshot(compImage, refImage, id, width, height)
-    #print(test1)
     if test1 == True: 
         return True
     else:
@@ -87,35 +100,53 @@ def screenshotAbout(width, height):
         return False
 
 def compareScreenshot(compImage, refImage, id, width, height):
+    quantumRange = 1
+    if width == 1400 and height == 1050:
+        quantumRange = 1.0
+    elif width == 1920 and height == 1080:
+        quantumRange = 0.75
+    elif width == 828 and height == 1792:
+        quantumRange = 0.75
+    else:
+        print('Resolution does not exist')
+        return False
     with Image(filename=refImage) as base:
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 20%
             result_image, result_metric = base.compare(img)
-            print(result_metric, ' -- 1.0 if', id, '-reference image and comparison image match.' )
+            print(result_metric, ' --', quantumRange, 'if', id, '-reference image and comparison image match.' )
             #https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/diffImageAbout.png
             #with result_image:
-                #result_image.save(filename='./compImages/diff.jpg')
-    if result_metric == 1.0:
+                #result_image.save(filename='./compImages/diff.jpg')    
+    if result_metric == quantumRange:
         return True
     else:
-        result_image.save(filename=(f'{imagePath}diffImage{id}{width}{height}.png'))
+        result_image.save(filename=(f'{imagePath}{id}/diffImage{id}{width}x{height}.png'))
         return False
  
-def takeNewRefImages():
+def takeNewRefImages(width, height):
+    driver.set_window_size(width, height)
     driver.implicitly_wait(3)
-    driver.save_screenshot('./compImages/HomeRef.png')
-    about = driver.find_element("id" , "12345")
-    about.click()
-    driver.save_screenshot('./compImages/AboutRef.png')
-    pricing = driver.find_element("id" , "1234")
-    pricing.click()
-    driver.save_screenshot('./compImages/PricingRef.png')
+    button = driver.find_element("id" , "Home")
+    button.click()
+    driver.save_screenshot(f'{imagePath}Home/HomeRef{width}x{height}.png')
+    button = driver.find_element("id" , "About")
+    button.click()
+    driver.save_screenshot(f'{imagePath}About/AboutRef{width}x{height}.png')
+    button = driver.find_element("id" , "Pricing")
+    button.click()
+    driver.save_screenshot(f'{imagePath}Pricing/PricingRef{width}x{height}.png')
+
+def RefForAllSizes():
+    takeNewRefImages(1400, 1050)
+    takeNewRefImages(1920, 1080)
+    takeNewRefImages(828, 1792)
 
 def main(width, height):
     driver.set_window_size(width, height)
-    sH = screenshotHome(width, height)
-    sP = screenshotPricing(width, height)
-    sA = screenshotAbout(width, height)
+    sH = screenshot(width, height, 'Home', "Home")
+    sP = screenshot(width, height, 'Pricing', "Pricing")
+    sA = screenshot(width, height, 'About', "About")
     if sA and sP and sH == True:
         #print(True)
         return True
@@ -126,7 +157,7 @@ def main(width, height):
 
 
 #takeNewRefImages()
-
+#RefForAllSizes()
 #main()
 
 #eine Funktion fuer Aenderungen der reference Variabeln waere vllt:

@@ -4,10 +4,10 @@ import { Link, useMatch, useResolvedPath } from 'react-router-dom'
 export default function Navbar() {
   return (
     <nav className='nav'>
-        <Link to='/' className='site-title'> Testwebsite </Link>
+        <Link to='/' className='site-title' id='Home'> Testwebsite </Link>
         <ul>
-          <CustomLink to='/pricing' id='1234'>Pricing</CustomLink>
-          <CustomLink to='/about' id='12345'>About</CustomLink>
+          <CustomLink to='/pricing' id='Pricing'>Pricing</CustomLink>
+          <CustomLink to='/about' id='About'>About</CustomLink>
         </ul>
     </nav>
   )
