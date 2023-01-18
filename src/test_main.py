@@ -1,6 +1,5 @@
 from main import main
 
-#siehe handy notizen "more notes" for ideas to make that work
 def test_1400x1050():
         assert main(1400, 1050) == True
 
