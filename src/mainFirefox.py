@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.firefox.options import Options
 
 options = Options()
+#Browser invisible 
 options.headless = True
 firefoxDriver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=options)
 imagePath = './compImages/Firefox/'
