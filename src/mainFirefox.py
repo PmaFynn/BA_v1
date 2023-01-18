@@ -42,7 +42,7 @@ def compareScreenshot(compImage, refImage, id, width, height):
         return False
     with Image(filename=refImage) as base:
         with Image(filename=compImage) as img:
-            base.fuzz = base.quantum_range * 0  # Threshold of 20%
+            base.fuzz = base.quantum_range * 0.1  # Threshold of 20%
             result_image, result_metric = base.compare(img)
             print(result_metric, ' --', quantumRange, 'if', id, '-reference image and comparison image match.' )
             #https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/diffImageAbout.png

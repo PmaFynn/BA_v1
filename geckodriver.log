@@ -1599,3 +1599,15 @@ JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Pha
 JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
 JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
 JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 718: Error: Phase "profile-before-change" is finished, it is too late to register completion condition "OS.File: flush I/O queued before profileBeforeChange"
+1674044628495	geckodriver	INFO	Listening on 127.0.0.1:51864
+1674044631565	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "51865" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Windows\\AppData\\Local\\Temp\\rust_mozprofilewZwvQZ"
+*** You are running in headless mode.
+1674044631842	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1674044631847	Marionette	INFO	Listening on port 51872
+Read port: 51872
+WebDriver BiDi listening on ws://127.0.0.1:51865
+1674044631942	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Windows\\AppData\\Local\\Temp\\rust_mozprofilewZwvQZ\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:51865/devtools/browser/3c87248a-0870-42a2-99fe-adb49362c2c0
