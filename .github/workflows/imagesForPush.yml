@@ -1,4 +1,4 @@
-name: Pytest after deployment
+name: Take images for comparison
 
 on:
   repository_dispatch:
@@ -11,8 +11,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-        #with:
-          #ref: dev
+        with:
+          ref: dev
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -24,5 +24,14 @@ jobs:
           pip install --upgrade Pillow
           pip install Wand
           pip install webdriver-manager
-      - name: execute pytest
-        run: pytest
+      - name: take images
+        run: |
+          python src/main.py
+          python src/mainFirefox.py
+      - name: Commit report 
+        run: |
+          git config --global user.name "PmaFynn"
+          git config --global user.email "fynn120801@gmail.com"
+          git add .
+          git commit -m "Automated report"
+          git push
