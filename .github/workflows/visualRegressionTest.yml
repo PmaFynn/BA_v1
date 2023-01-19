@@ -28,8 +28,8 @@ jobs:
         run: pytest
       - name: Commit report 
         run: |
-          git status
           git config --global user.name "PmaFynn"
           git config --global user.email "fynn120801@gmail.com"
-          git commit -a -m "Automated report"
+          git add .
+          git commit -m "Automated report"
           git push
