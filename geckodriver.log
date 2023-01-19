@@ -1660,3 +1660,18 @@ WebDriver BiDi listening on ws://127.0.0.1:49707
 [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Windows\\AppData\\Local\\Temp\\rust_mozprofileoAyupN\\search.json.mozlz4", (void 0)))
 DevTools listening on ws://127.0.0.1:49707/devtools/browser/6547fac2-0317-48dc-b7f3-7c90e0861ef4
+1674140988231	geckodriver	INFO	Listening on 127.0.0.1:62938
+1674140991274	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "62939" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\rust_mozprofilepPksEU"
+*** You are running in headless mode.
+1674141017461	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1674141017570	Marionette	INFO	Listening on port 62949
+Read port: 62949
+Read port: 62949
+WebDriver BiDi listening on ws://127.0.0.1:62939
+1674141019986	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\RUNNER~1\\AppData\\Local\\Temp\\rust_mozprofilepPksEU\\search.json.mozlz4", (void 0)))
+console.error: Region.sys.mjs: "Error fetching region" (new AbortError("The operation was aborted. ", (void 0), 762))
+console.error: Region.sys.mjs: "Failed to fetch region" (new Error("NO_RESULT", "resource://gre/modules/Region.sys.mjs", 416))
+DevTools listening on ws://127.0.0.1:62939/devtools/browser/6c68eab1-682d-4b14-a20d-17525d03c975
