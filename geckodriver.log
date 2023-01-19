@@ -1056,7 +1056,8 @@ Read port: 57096
 [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Windows\\AppData\\Local\\Temp\\rust_mozprofileWRmKQ5\\search.json.mozlz4", (void 0)))
 DevTools listening on ws://127.0.0.1:57088/devtools/browser/241ff144-b6c9-4651-92ff-d3b8be18e813
-1674043272877	geckodriver	INFO	Listening on 127.0.0.1:57134
+Exiting due to channel error.
+Listening on 127.0.0.1:57134
 1674043275934	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "57135" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Windows\\AppData\\Local\\Temp\\rust_mozprofileRslhvR"
 *** You are running in headless mode.
 1674043276190	Marionette	INFO	Marionette enabled
@@ -1647,3 +1648,15 @@ WebDriver BiDi listening on ws://127.0.0.1:52125
 [GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Windows\\AppData\\Local\\Temp\\rust_mozprofileT2kNHE\\search.json.mozlz4", (void 0)))
 DevTools listening on ws://127.0.0.1:52125/devtools/browser/7675c6b3-aca3-4071-a701-6abd7fd5d227
+1674127606179	geckodriver	INFO	Listening on 127.0.0.1:49706
+1674127609233	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-headless" "--remote-debugging-port" "49707" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Windows\\AppData\\Local\\Temp\\rust_mozprofileoAyupN"
+*** You are running in headless mode.
+1674127610036	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1674127610041	Marionette	INFO	Listening on port 49717
+Read port: 49717
+WebDriver BiDi listening on ws://127.0.0.1:49707
+1674127610185	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Windows\\AppData\\Local\\Temp\\rust_mozprofileoAyupN\\search.json.mozlz4", (void 0)))
+DevTools listening on ws://127.0.0.1:49707/devtools/browser/6547fac2-0317-48dc-b7f3-7c90e0861ef4
