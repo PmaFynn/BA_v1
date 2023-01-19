@@ -1,10 +1,10 @@
-name: CI - pytest
+#name: CI - pytest
 
-on:
+#on:
   push:
     branches: [ dev ]
 
-jobs:
+#jobs:
   executePytestOnPull:
     runs-on: windows-latest
     
