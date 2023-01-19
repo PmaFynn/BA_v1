@@ -7,7 +7,7 @@ on:
 permissions: write-all
 
 jobs:
-  execute_pytest:
+  push_images:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
