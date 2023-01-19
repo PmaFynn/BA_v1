@@ -157,7 +157,25 @@ def main(width, height):
         print("Visual Regression Test for", width, height, "failed. Reverting to last commit suggested to fix it")
         return False
 
+def takeImagesForPush():
+    driver.set_window_size(1400, 1050)
+    screenshot(1400, 1050, 'Home', "Home")
+    screenshot(1400, 1050, 'Pricing', "Pricing")
+    screenshot(1400, 1050, 'About', "About")
+    driver.set_window_size(1920, 1080)
+    screenshot(1920, 1080, 'Home', "Home")
+    screenshot(1920, 1080, 'Pricing', "Pricing")
+    screenshot(1920, 1080, 'About', "About")
+    driver.set_window_size(828, 1792)
+    screenshot(828, 1792, 'Home', "Home")
+    screenshot(828, 1792, 'Pricing', "Pricing")
+    screenshot(828, 1792, 'About', "About")
+    driver.set_window_size(1280, 800)
+    screenshot(1280, 800, 'Home', "Home")
+    screenshot(1280, 800, 'Pricing', "Pricing")
+    screenshot(1280, 800, 'About', "About")
 
+takeImagesForPush()
 
 #takeNewRefImages()
 #RefForAllSizes()
