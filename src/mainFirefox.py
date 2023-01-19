@@ -1,4 +1,6 @@
 from selenium import webdriver
+from os import path
+from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.firefox import GeckoDriverManager
 from PIL import Image
@@ -9,7 +11,8 @@ from selenium.webdriver.firefox.options import Options
 options = Options()
 #Browser invisible 
 options.headless = True
-firefoxDriver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), options=options)
+#firefoxDriver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), service=service1, options=options)
+firefoxDriver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install(), log_path=path.devnull), options=options)
 imagePath = './compImages/Firefox/'
 url = "https://pmafynn.github.io/BA_v1/"
 firefoxDriver.get(url)
