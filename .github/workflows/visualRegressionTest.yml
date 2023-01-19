@@ -11,8 +11,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-        #with:
-          #ref: images
+        with:
+          ref: dev
       - uses: actions/setup-python@v4
         with:
           python-version: '3.10'
@@ -26,9 +26,10 @@ jobs:
           pip install webdriver-manager
       - name: execute pytest
         run: pytest
-      #- name: Commit report #Bringt nix. I dont wanna see the pictures atm
-        #run: |
-          #git config --global user.name "PmaFynn"
-          #git config --global user.email "fynn120801@gmail.com"
-          #git commit -a -m "Automated report"
-          #git push
+      - name: Commit report 
+        run: |
+          git status
+          git config --global user.name "PmaFynn"
+          git config --global user.email "fynn120801@gmail.com"
+          git commit -a -m "Automated report"
+          git push
