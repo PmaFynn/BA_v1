@@ -11,7 +11,7 @@ from wand.image import Image
 from selenium.webdriver.common.keys import Keys
 import time 
 
-#
+
 #chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
 chrome_options = Options()
