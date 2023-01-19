@@ -14,6 +14,7 @@ options.headless = True
 #firefoxDriver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()), service=service1, options=options)
 firefoxDriver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install(), log_path=path.devnull), options=options)
 imagePath = './compImages/Firefox/'
+imagePath2 = '/compImages/Firefox/'
 url = "https://pmafynn.github.io/BA_v1/"
 firefoxDriver.get(url)
 
@@ -48,7 +49,7 @@ def compareScreenshot(compImage, refImage, id, width, height):
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 10%
             result_image, result_metric = base.compare(img)
-            print(result_metric, ' --', quantumRange, 'if', id, '-reference image and comparison image match.' )
+            print(result_metric, ' --', quantumRange, 'if', id, f'-reference image and comparison image match. Difference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}' )
             #https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/diffImageAbout.png
             #with result_image:
                 #result_image.save(filename='./compImages/diff.jpg')    

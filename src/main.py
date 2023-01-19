@@ -33,6 +33,7 @@ for option in options:
 driver = webdriver.Chrome(options=chrome_options) #so nicht
 os.environ['PATH'] = r"C:/Devlopment/SeleniumDrivers/chromedriver.exe"
 imagePath = './compImages/'
+imagePath2 = '/compImages/'
 #basePricingPage = './compImages/PricingRef.png'
 #baseAboutPage = './compImages/AboutRef.png'
 #baseHomePage = './compImages/HomeRef.png'
@@ -116,7 +117,7 @@ def compareScreenshot(compImage, refImage, id, width, height):
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 20%
             result_image, result_metric = base.compare(img)
-            print(result_metric, ' --', quantumRange, 'if', id, '-reference image and comparison image match.' )
+            print(result_metric, ' --', quantumRange, 'if', id, f'-reference image and comparison image match. Difference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}' )
             #https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/diffImageAbout.png
             #with result_image:
                 #result_image.save(filename='./compImages/diff.jpg')    
