@@ -153,7 +153,7 @@ def main(width, height):
         #print(True)
         return True
     else:
-        print("Visual Regression Test for", width, height, "failed. Reverting to last commit suggested to fix it")
+        print("Visual Regression Test for", width, height, "failed! \n Suggested Procedurce (in your terminal): \n copy the Output of: git rev-parse HEAD~1 \n paste the output at the end of: git reset --hard [strg+v]")
         return False
 
 def takeImagesForPush():

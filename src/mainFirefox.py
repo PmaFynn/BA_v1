@@ -49,13 +49,14 @@ def compareScreenshot(compImage, refImage, id, width, height):
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 10%
             result_image, result_metric = base.compare(img)
-            print(result_metric, ' --', quantumRange, 'if', id, f'-reference image and comparison image match. Difference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}' )
+            print(result_metric, ' --', quantumRange, 'if', id, f'-reference image and comparison image match.' )
             #https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/diffImageAbout.png
             #with result_image:
                 #result_image.save(filename='./compImages/diff.jpg')    
     if result_metric <= quantumRange and result_metric > quantumRange - 0.001:
         return True
     else:
+        print('Not identical!', id, f'd-ifference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}')
         result_image.save(filename=(f'{imagePath}{id}/diffImage{id}{width}x{height}.png'))
         return False
  
@@ -87,7 +88,7 @@ def mainFirefox(width, height):
     if sA and sP and sH == True:
         return True
     else:
-        print("Visual Regression Test for", width, height, "failed. Reverting to last commit suggested to fix it")
+        print("Visual Regression Test for", width, height, "failed! \n Suggested Procedurce (in your terminal): \n copy the Output of: git rev-parse HEAD~1 \n paste the output at the end of: git reset --hard [strg+v]")
         return False
 
 def takeImagesForPush():
