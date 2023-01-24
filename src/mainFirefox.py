@@ -88,7 +88,7 @@ def mainFirefox(width, height):
     if sA and sP and sH == True:
         return True
     else:
-        print("Visual Regression Test for", width, height, "failed! \n Suggested Procedurce (in your terminal): \n copy the Output of: git rev-parse HEAD~1 \n paste the output at the end of: git reset --hard [strg+v]")
+        print("Visual Regression Test for", width, height, "failed! \n Suggested Procedurce [in your terminal (while on master branch)]: \n git rev-parse HEAD~1 | clip \n git reset --hard {strg+v} \n git push")
         return False
 
 def takeImagesForPush():
