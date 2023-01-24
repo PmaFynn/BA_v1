@@ -25,7 +25,7 @@ jobs:
           pip install Wand
           pip install webdriver-manager
       - name: test
-        run: echo "${{toJSON(github.eventhead_commit)}}"
+        run: echo "${{toJSON(github.event.head_commit)}}"
       - name: take images
         run: |
           python src/main.py
