@@ -34,9 +34,6 @@ driver = webdriver.Chrome(options=chrome_options) #so nicht
 os.environ['PATH'] = r"C:/Devlopment/SeleniumDrivers/chromedriver.exe"
 imagePath = './compImages/'
 imagePath2 = '/compImages/'
-#basePricingPage = './compImages/PricingRef.png'
-#baseAboutPage = './compImages/AboutRef.png'
-#baseHomePage = './compImages/HomeRef.png'
 #driver = webdriver.Chrome()
 #driver.set_window_size(1400, 1050)
 #url = "http://localhost:3000" #local
