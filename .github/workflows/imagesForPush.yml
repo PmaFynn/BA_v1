@@ -35,8 +35,4 @@ jobs:
           git add .
           git commit -m "Automated report"
           git push
-      - name: get Sha1 of last commit
-      #repository depatch 
-      #auf master checkout 
-      #da commit revert
-        run: git rev-parse HEAD~1
+

@@ -114,13 +114,14 @@ def compareScreenshot(compImage, refImage, id, width, height):
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 20%
             result_image, result_metric = base.compare(img)
-            print(result_metric, ' --', quantumRange, 'if', id, f'-reference image and comparison image match. Difference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}' )
+            print(result_metric, ' --', quantumRange, 'if', id, f'-reference image and comparison image match.')
             #https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/diffImageAbout.png
             #with result_image:
                 #result_image.save(filename='./compImages/diff.jpg')    
     if result_metric == quantumRange:
         return True
     else:
+        print('Not identical!', id, f'd-ifference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}')
         result_image.save(filename=(f'{imagePath}{id}/diffImage{id}{width}x{height}.png'))
         return False
  
@@ -157,6 +158,42 @@ def main(width, height):
 
 def takeImagesForPush():
     driver.set_window_size(1400, 1050)
+    screenshot(1400, 1050, 'Home', "Home")
+    screenshot(1400, 1050, 'Pricing', "Pricing")
+    screenshot(1400, 1050, 'About', "About")
+    driver.set_window_size(1920, 1080)
+    screenshot(1920, 1080, 'Home', "Home")
+    screenshot(1920, 1080, 'Pricing', "Pricing")
+    screenshot(1920, 1080, 'About', "About")
+    driver.set_window_size(828, 1792)
+    screenshot(828, 1792, 'Home', "Home")
+    screenshot(828, 1792, 'Pricing', "Pricing")
+    screenshot(828, 1792, 'About', "About")
+    driver.set_window_size(1280, 800)
+    screenshot(1280, 800, 'Home', "Home")
+    screenshot(1280, 800, 'Pricing', "Pricing")
+    screenshot(1280, 800, 'About', "About")
+
+takeImagesForPush()
+
+#takeNewRefImages()
+#RefForAllSizes()
+#main()
+
+#eine Funktion fuer Aenderungen der reference Variabeln waere vllt:
+    #eine andere python selenium datei welche ein neues Bild macht und das als ref speichert, da immer ueberschrieben wird -> easy
+
+#main()
+#changeRefImages()
+
+
+#alle neuen images als neue ref images setzen
+            #maybe trivial, da die ja alle gleich sind.
+        #stattdessen Gedanken druber machen, wie neue Testfaelle eingefuegt werden koennen
+            #wohl moeglich eigene python datei welche das uebernimmt?
+
+def outdated():
+    driver.set_window_size(1400, 1050)
     sh = screenshot(1400, 1050, 'Home', "Home")
     sp = screenshot(1400, 1050, 'Pricing', "Pricing")
     sa = screenshot(1400, 1050, 'About', "About")
@@ -185,22 +222,4 @@ def takeImagesForPush():
         return True
     else:
         print ("VRT has failed -> Revert to last working commit suggested")
-        return True 
-
-takeImagesForPush()
-
-#takeNewRefImages()
-#RefForAllSizes()
-#main()
-
-#eine Funktion fuer Aenderungen der reference Variabeln waere vllt:
-    #eine andere python selenium datei welche ein neues Bild macht und das als ref speichert, da immer ueberschrieben wird -> easy
-
-#main()
-#changeRefImages()
-
-
-#alle neuen images als neue ref images setzen
-            #maybe trivial, da die ja alle gleich sind.
-        #stattdessen Gedanken druber machen, wie neue Testfaelle eingefuegt werden koennen
-            #wohl moeglich eigene python datei welche das uebernimmt?
+        return True
