@@ -181,10 +181,10 @@ def takeImagesForPush():
     if sa and sp and sh == True:
         z1 = True
     if z1 and x1 and y1 == True:
-        print("Test has been succesfull -> Images do not have to be saved since they are identical to the reference images")
+        print("VRT has been succesfull")
         return True
     else:
-        print ("Test has failed -> Revert to last commit being prepared")
+        print ("VRT has failed -> Revert to last working commit suggested")
         return True 
 
 takeImagesForPush()

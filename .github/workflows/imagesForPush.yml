@@ -24,8 +24,6 @@ jobs:
           pip install --upgrade Pillow
           pip install Wand
           pip install webdriver-manager
-      - name: test
-        run: echo "${{toJSON(github.event.head_commit)}}"
       - name: take images
         run: |
           python src/main.py
