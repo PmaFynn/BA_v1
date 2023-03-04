@@ -114,14 +114,14 @@ def compareScreenshot(compImage, refImage, id, width, height):
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 20%
             result_image, result_metric = base.compare(img)
-            print(result_metric, ' --', quantumRange, 'if', id, f'-reference image and comparison image match.')
+            print(result_metric, ' ==', quantumRange, 'if', id, f'-reference image and comparison image match.')
             #https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/diffImageAbout.png
             #with result_image:
                 #result_image.save(filename='./compImages/diff.jpg')    
     if result_metric == quantumRange:
         return True
     else:
-        print('Not identical!', id, f'd-ifference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}')
+        print('Not identical! \n', id, f'-difference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}')
         result_image.save(filename=(f'{imagePath}{id}/diffImage{id}{width}x{height}.png'))
         return False
  

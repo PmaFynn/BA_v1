@@ -15,6 +15,7 @@ options.headless = True
 firefoxDriver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install(), log_path=path.devnull), options=options)
 imagePath = './compImages/Firefox/'
 imagePath2 = '/compImages/Firefox/'
+#url = "http://localhost:3000"
 url = "https://pmafynn.github.io/BA_v1/"
 firefoxDriver.get(url)
 
@@ -49,14 +50,14 @@ def compareScreenshot(compImage, refImage, id, width, height):
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 10%
             result_image, result_metric = base.compare(img)
-            print(result_metric, ' --', quantumRange, 'if', id, f'-reference image and comparison image match.' )
+            print(result_metric, ' ==', quantumRange, 'if', id, f'-reference image and comparison image match.' )
             #https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/diffImageAbout.png
             #with result_image:
                 #result_image.save(filename='./compImages/diff.jpg')    
     if result_metric <= quantumRange and result_metric > quantumRange - 0.001:
         return True
     else:
-        print('Not identical!', id, f'd-ifference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}')
+        print('Not identical! \n', id, f'-difference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}')
         result_image.save(filename=(f'{imagePath}{id}/diffImage{id}{width}x{height}.png'))
         return False
  
@@ -73,7 +74,7 @@ def takeNewRefImages(width, height):
     button.click()
     firefoxDriver.save_screenshot(f'{imagePath}Pricing/PricingRef{width}x{height}.png')
 
-def RefForAllSizes():
+def RefForAllSizesFire():
     takeNewRefImages(1400, 1050)
     takeNewRefImages(1920, 1080)
     takeNewRefImages(828, 1792)

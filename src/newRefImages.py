@@ -1,3 +1,5 @@
-from main import takeNewRefImages
+from main import RefForAllSizes
+from mainFirefox import RefForAllSizesFire
 
-takeNewRefImages()
+RefForAllSizes()
+RefForAllSizesFire()
