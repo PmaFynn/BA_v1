@@ -16,8 +16,8 @@ firefoxDriver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().in
 imagePath = './compImages/Firefox/'
 imagePath2 = '/compImages/Firefox/'
 imagePathTest = './compImages/'
-url = "http://localhost:3000"
-#url = "https://pmafynn.github.io/BA_v1/"
+#url = "http://localhost:3000"
+url = "https://pmafynn.github.io/BA_v1/"
 firefoxDriver.get(url)
 
 def screenshot(width, height, id, webID):
