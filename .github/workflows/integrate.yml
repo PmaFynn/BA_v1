@@ -4,6 +4,8 @@ on:
   push:
     branches: [ master ]
 
+permissions: write-all
+
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
@@ -25,13 +27,65 @@ jobs:
           user_email: 'github-actions[bot]@users.noreply.github.com'
           github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
           repository: ${{ github.repository }}
-      - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
+      #- name: Repository Dispatch
+        #uses: peter-evans/repository-dispatch@v2
+        #with:
+          #token: ${{ secrets.DISPATCH_WORKFLOW }}
+          #repository: PmaFynn/BA_v1
+          #event-type: my-event
+          #client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+  push_images:
+    needs: build_and_deploy
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.DISPATCH_WORKFLOW }}
-          repository: PmaFynn/BA_v1
-          event-type: my-event
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+          ref: dev
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          pip install selenium
+          pip install --upgrade Pillow
+          pip install Wand
+          pip install webdriver-manager
+      - name: take images
+        run: |
+          python src/main.py
+          python src/mainFirefox.py
+      - name: Commit report 
+        run: |
+          git config --global user.name "PmaFynn"
+          git config --global user.email "fynn120801@gmail.com"
+          git add .
+          git commit -m "Automated report"
+          git push
+   execute_pytest:
+    needs: build_and_deploy
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+        #with:
+          #ref: dev
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          pip install selenium
+          pip install --upgrade Pillow
+          pip install Wand
+          pip install webdriver-manager
+      - name: execute pytest
+        run: pytest        
+
+
+
 
 
 
