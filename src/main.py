@@ -36,8 +36,8 @@ imagePath = './compImages/'
 imagePath2 = '/compImages/'
 #driver = webdriver.Chrome()
 #driver.set_window_size(1400, 1050)
-#url = "http://localhost:3000" #local
-url = "https://pmafynn.github.io/BA_v1/"
+url = "http://localhost:3000" #local
+#url = "https://pmafynn.github.io/BA_v1/"
 driver.get(url) #local als auch 'on your network' funktioniert beides
 #PATH = "C:\Devlopment\SeleniumDrivers\chromedriver.exe"
 #es gibt mehrere driver, also cross browser testing maybe moeglich
@@ -114,14 +114,14 @@ def compareScreenshot(compImage, refImage, id, width, height):
         with Image(filename=compImage) as img:
             base.fuzz = base.quantum_range * 0  # Threshold of 20%
             result_image, result_metric = base.compare(img)
-            print(result_metric, ' ==', quantumRange, 'if', id, f'-reference image and comparison image match.')
+            #print(result_metric, ' !=', quantumRange, 'if', id, f'-reference image and comparison image match.')
             #https://github.com/PmaFynn/BA_v1/blob/CiServerImages/compImages/diffImageAbout.png
             #with result_image:
                 #result_image.save(filename='./compImages/diff.jpg')    
     if result_metric == quantumRange:
         return True
     else:
-        print('Not identical! \n', id, f'-difference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}')
+        print(result_metric, ' !=', quantumRange, '-> Not identical! \n', id, f'-difference images can be seen at https://github.com/PmaFynn/BA_v1/tree/dev{imagePath2}{id}')
         result_image.save(filename=(f'{imagePath}{id}/diffImage{id}{width}x{height}.png'))
         return False
  

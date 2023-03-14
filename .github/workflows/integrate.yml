@@ -1,22 +1,29 @@
+# Define name
 name: Node Continuous Integration
-
+# Event that triggers workflow 
+# honorable mentions:
+# on: pull request
+# on: repository_dispatch:
 on:
   push:
     branches: [ master ]
-
+# Optional provision of permissions
 permissions: write-all
-
+# Define job(s)
 jobs:
-  build_and_deploy:
+  # Define name of job
+  build_deploy_visualRegressionTest_dispatch:
+    # Specify operating system (ubuntu, windows or mac)
     runs-on: ubuntu-latest
+    # Steps to fulfill a job
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v3 # predefined action
+      - uses: actions/setup-node@v3 # predefined action
         with: 
           node-version: 18
-      - run: npm ci
-      #- run: npm run build --if-present
-      - name: Deploy
+      - run: npm ci  # similiar to npm install
+      # Optinal defining of a name for a specific step
+      - name: Deploy # deployment of website
         run: |
           git config --global user.name "Fynn_Friedrichs"
           git config --global user.email "Fynn120801@gmail.com"
@@ -28,7 +35,7 @@ jobs:
           github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
           repository: ${{ github.repository }}
       - name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v2 # predefined action
         with:
           token: ${{ secrets.DISPATCH_WORKFLOW }}
           repository: PmaFynn/BA_v1

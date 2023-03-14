@@ -22,7 +22,11 @@ body {
 }
 
 .site-title{
+<<<<<<< HEAD
     font-size: 2rem; 
+=======
+    font-size: 3rem;
+>>>>>>> dev
 }
 
 .nav ul{
