@@ -17,6 +17,10 @@ body {
     padding: 0 1rem;
 }
 
+.pricingPrice{
+    color: black;
+}
+
 .site-title{
     font-size: 2rem; 
 }

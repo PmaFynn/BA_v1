@@ -36,12 +36,12 @@ imagePath = './compImages/'
 imagePath2 = '/compImages/'
 #driver = webdriver.Chrome()
 #driver.set_window_size(1400, 1050)
-#url = "http://localhost:3000" #local
-url = "https://pmafynn.github.io/BA_v1/"
+url = "http://localhost:3000" #local
+#url = "https://pmafynn.github.io/BA_v1/"
 driver.get(url) #local als auch 'on your network' funktioniert beides
 #PATH = "C:\Devlopment\SeleniumDrivers\chromedriver.exe"
 #es gibt mehrere driver, also cross browser testing maybe moeglich
-
+#
 def screenshot(width, height, id, webID):
     refImage = f'{imagePath}{id}/{id}Ref{width}x{height}.png'
     driver.implicitly_wait(3)
