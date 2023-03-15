@@ -28,11 +28,14 @@ jobs:
         run: |
           python src/main.py
           python src/mainFirefox.py
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: Commit report 
         run: |
           git config --global user.name "PmaFynn"
           git config --global user.email "fynn120801@gmail.com"
           git add .
-          git commit -m "Automated report"
+          git commit -m "Automated report ${{ steps.date.outputs.date }}"
           git push
 
